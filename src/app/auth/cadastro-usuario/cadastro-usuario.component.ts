@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './cadastro-usuario.component.html',
   styleUrl: './cadastro-usuario.component.css',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
 })
 export class CadastroUsuarioComponent {
   nome = '';
@@ -18,7 +19,11 @@ export class CadastroUsuarioComponent {
   telefone = '';
   setor = '';
   tipoUsuario = 'COLABORADOR';
-  empresaId = 1; 
+  empresaId = 1;
+
+  termoEmpresa = '';
+  empresasEncontradas: any[] = [];
+  empresaSelecionada: any = null;
 
   private readonly BASE_URL = 'http://localhost:8080';
 
@@ -33,7 +38,7 @@ export class CadastroUsuarioComponent {
       telefone: this.telefone,
       setor: this.setor,
       tipoUsuario: this.tipoUsuario,
-      empresaId: this.empresaId
+      empresaId: this.empresaSelecionada?.id
     };
 
     this.http.post(`${this.BASE_URL}/usuarios`, payload).subscribe({
@@ -41,5 +46,20 @@ export class CadastroUsuarioComponent {
       error: (err) =>
         alert('Erro ao cadastrar: ' + (err.error?.message || 'tente novamente'))
     });
+  }
+
+  buscarEmpresas() {
+    if (this.termoEmpresa.length < 3) return;
+
+    this.http.get<any[]>(`http://localhost:8080/empresas/buscar?termo=${this.termoEmpresa}`)
+      .subscribe({
+        next: (res) => this.empresasEncontradas = res,
+        error: () => this.empresasEncontradas = []
+      });
+  }
+
+  selecionarEmpresa(empresa: any) {
+    this.empresaSelecionada = empresa;
+    this.empresasEncontradas = [];
   }
 }
