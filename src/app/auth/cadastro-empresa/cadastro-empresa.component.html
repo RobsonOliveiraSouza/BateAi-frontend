@@ -1,0 +1,23 @@
+<h2>Cadastro de Empresa</h2>
+
+<form (ngSubmit)="cadastrar()" #form="ngForm">
+  <label>Razão Social:</label>
+  <input type="text" [(ngModel)]="razaoSocial" name="razaoSocial" required />
+
+  <label>Nome Fantasia:</label>
+  <input type="text" [(ngModel)]="nomeFantasia" name="nomeFantasia" required />
+
+  <label>CNPJ:</label>
+  <input type="text" [(ngModel)]="cnpj" name="cnpj" required />
+
+  <label>Email do Responsável:</label>
+  <input type="email" [(ngModel)]="emailResponsavel" name="emailResponsavel" required />
+
+  <label>Senha:</label>
+  <input type="password" [(ngModel)]="senhaResponsavel" name="senhaResponsavel" required />
+
+  <label>Endereço:</label>
+  <input type="text" [(ngModel)]="endereco" name="endereco" required />
+
+  <button type="submit" [disabled]="!form.form.valid">Cadastrar Empresa</button>
+</form>
