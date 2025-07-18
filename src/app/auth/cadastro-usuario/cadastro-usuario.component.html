@@ -26,17 +26,17 @@
   </select>
 
   <label for="empresa">Procurar Empresa:</label>
-<input type="text" id="empresa" [(ngModel)]="termoEmpresa" (input)="buscarEmpresas()" />
+  <input [(ngModel)]="termoEmpresa" (input)="buscarEmpresas()" />
 
-<ul *ngIf="empresasEncontradas.length > 0">
-  <li *ngFor="let empresa of empresasEncontradas" (click)="selecionarEmpresa(empresa)">
-    {{ empresa.nomeFantasia }} (CNPJ: {{ empresa.cnpj }})
-  </li>
-</ul>
-
-<p *ngIf="empresaSelecionada">
-  Empresa selecionada: {{ empresaSelecionada.nomeFantasia }} (ID: {{ empresaSelecionada.id }})
-</p>
+  <ul *ngIf="empresasEncontradas.length > 0">
+    <li *ngFor="let empresa of empresasEncontradas" (click)="selecionarEmpresa(empresa)">
+      {{ empresa.nomeFantasia }} (CNPJ: {{ empresa.cnpj }})
+    </li>
+  </ul>
+  
+  <p *ngIf="empresaSelecionada">
+    Empresa selecionada: {{ empresaSelecionada.nomeFantasia }}
+  </p>
 
   <button type="submit" [disabled]="!form.form.valid">Cadastrar</button>
 </form>
