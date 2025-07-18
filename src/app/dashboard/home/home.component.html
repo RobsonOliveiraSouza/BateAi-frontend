@@ -1,1 +1,20 @@
-<p>home works!</p>
+<h2>Bem-vindo ao Sistema!</h2>
+
+<div *ngIf="role === 'COORDENADOR'">
+  <h3>Menu do Coordenador</h3>
+  <button routerLink="/usuarios/gerenciar">Gerenciar Usuários</button>
+  <button routerLink="/ponto/registro">Registrar Ponto</button>
+</div>
+
+<div *ngIf="role === 'COLABORADOR'">
+  <h3>Menu do Colaborador</h3>
+  <button routerLink="/ponto/historico">Ver Histórico de Pontos</button>
+</div>
+
+<div *ngIf="role === 'EMPRESA'">
+  <h3>Menu da Empresa</h3>
+  <button routerLink="/usuarios/dashboard">Ver Dashboard da Empresa</button>
+  <button routerLink="/coordenadores/pendentes">Aprovar Coordenadores</button>
+</div>
+
+<button (click)="logout()">Sair</button>

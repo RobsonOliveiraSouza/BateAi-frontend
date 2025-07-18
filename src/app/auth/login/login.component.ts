@@ -15,7 +15,9 @@ export class LoginComponent {
   email = '';
   senha = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+    console.log('LoginComponent carregado');
+  }
 
   login() {
     this.authService.login(this.email, this.senha).subscribe({
@@ -33,16 +35,16 @@ export class LoginComponent {
           if (role === 'EMPRESA') {
             this.router.navigate(['/dashboard']);
           } else if (role === 'COORDENADOR') {
-            this.router.navigate(['/ponto/registro']);
+            this.router.navigate(['/dashboard']);
           } else if (role === 'COLABORADOR') {
-            this.router.navigate(['/ponto/historico']);
+            this.router.navigate(['/dashboard']);
           } else {
             alert('Tipo de usuário desconhecido.');
           }
         }
       },
       error: (err) => {
-        alert('Erro ao fazer login: ' + (err.error?.message || 'verifique as credenciais.'));
+        this.authService.erroLogin();
       }
     });
   }

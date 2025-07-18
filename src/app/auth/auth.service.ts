@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { jwtDecode} from 'jwt-decode';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -8,14 +10,24 @@ import { jwtDecode} from 'jwt-decode';
 export class AuthService {
   private readonly BASE_URL = 'http://localhost:8080';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router, private toastr: ToastrService) {}
 
   login(email: string, senha: string) {
     return this.http.post<any>(`${this.BASE_URL}/auth/login`, { email, senha });
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('token');
+    this.toastr.success('Logout realizado com sucesso!');
+    this.router.navigate(['/auth/login']);
+  }
+
+  loginSuccess(): void {
+    this.toastr.success('Login efetuado com sucesso');
+  }
+
+  erroLogin(): void {
+    this.toastr.error('Credenciais inválidas');
   }
 
   getToken(): string | null {

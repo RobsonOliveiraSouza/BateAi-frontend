@@ -1,0 +1,36 @@
+<h2>Gerenciar Usuários da Empresa</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Tipo</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let usuario of usuarios">
+      <td>{{ usuario.nome }}</td>
+      <td>{{ usuario.email }}</td>
+      <td>{{ usuario.tipoUsuario }}</td>
+      <td>{{ usuario.statusVinculo }}</td>
+      <td>
+        <ng-container [ngSwitch]="usuario.statusVinculo">
+          <ng-container *ngSwitchCase="'PENDENTE_COLABORADOR'">
+            <button (click)="aprovar(usuario)">Aprovar</button>
+            <button (click)="rejeitar(usuario)">Rejeitar</button>
+          </ng-container>
+          <ng-container *ngSwitchCase="'PENDENTE_COORDENADOR'">
+            <button (click)="aprovar(usuario)">Aprovar</button>
+            <button (click)="rejeitar(usuario)">Rejeitar</button>
+          </ng-container>
+          <ng-container *ngSwitchCase="'APROVADO'">
+            <button (click)="remover(usuario)">Remover</button>
+          </ng-container>
+        </ng-container>
+      </td>
+    </tr>
+  </tbody>
+</table>

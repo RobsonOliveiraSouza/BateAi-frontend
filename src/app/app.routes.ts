@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { roleGuard } from './auth/guards/role.guard';
+import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
   {
@@ -36,10 +37,10 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    canActivate: [roleGuard(['EMPRESA'])],
+    canActivate: [roleGuard(['EMPRESA', 'COORDENADOR', 'COLABORADOR'])],
     loadComponent: () =>
       import('./dashboard/home/home.component').then(m => m.HomeComponent)
-  },
+  },  
   {
     path: 'aguarde-aprovacao',
     loadComponent: () =>
@@ -49,6 +50,11 @@ export const routes: Routes = [
     path: 'acesso-negado',
     loadComponent: () =>
       import('./acesso-negado/acesso-negado.component').then(m => m.AcessoNegadoComponent)
+  },
+  {
+    path: 'usuarios/gerenciar',
+    canActivate: [roleGuard(['COORDENADOR'])],
+    loadComponent: () => import('./gerenciar-usuarios/gerenciar-usuarios.component').then(m => m.GerenciarUsuariosComponent)
   }
-   
+     
 ];
