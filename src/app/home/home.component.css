@@ -1,0 +1,85 @@
+/* Remover margens/padding padrão que causam bordas brancas */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Container principal */
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  color: white;
+  text-align: center;
+}
+
+/* Conteúdo central */
+.home-content {
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Título */
+.home-content h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+/* Subtítulo */
+.subtitle {
+  font-size: 1.25rem;
+  color: #f3f4f6;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* Destaque */
+.highlight {
+  color: #ffffff;
+}
+
+/* Grupo de botões */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Estilo dos botões */
+.button-group button {
+  padding: 0.75rem 2rem;
+  border: 2px solid white;
+  border-radius: 9999px;
+  background-color: transparent;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.button-group button:hover {
+  background-color: white;
+  color: #4f46e5;
+}
+
+/* Responsividade */
+@media (min-width: 640px) {
+  .button-group {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Estilo da logo (caso queira usar) */
+.logo {
+  max-width: 150px;
+  margin-bottom: 2rem;
+}

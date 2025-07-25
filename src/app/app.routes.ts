@@ -1,13 +1,15 @@
 import { Routes } from '@angular/router';
 import { roleGuard } from './auth/guards/role.guard';
+import { HomeRedirectGuard } from './auth/guards/home-redirect.guard';
 import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth/login',
-    pathMatch: 'full'
-  },
+    loadComponent: () =>
+      import('./home/home.component').then(m => m.HomeComponent),
+    canActivate: [HomeRedirectGuard],
+  },  
   {
     path: 'auth/login',
     loadComponent: () =>
@@ -39,7 +41,7 @@ export const routes: Routes = [
     path: 'dashboard',
     canActivate: [roleGuard(['EMPRESA', 'COORDENADOR', 'COLABORADOR'])],
     loadComponent: () =>
-      import('./dashboard/home/home.component').then(m => m.HomeComponent)
+      import('./dashboard/dashboard.component').then(m => m.DashboardComponent)
   },  
   {
     path: 'aguarde-aprovacao',

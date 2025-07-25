@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../auth/auth.service';
+import { AuthService } from '../auth/auth.service';
 
 
 @Component({
   selector: 'app-home',
   imports: [CommonModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.css'
 })
-export class HomeComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   role: string | null = null;
 
   constructor(private authService: AuthService) {}
@@ -21,5 +21,4 @@ export class HomeComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
-  
 }
