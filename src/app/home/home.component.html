@@ -1,19 +1,26 @@
 <div class="home-container">
     <div class="home-content">
-  
-      <img src="assets/logo.png" alt="Logo BateAi" class="logo" />
-  
-      <h1>Bem-vindo ao <span class="highlight">BateAi</span></h1>
-  
-      <p class="subtitle">
-        Acompanhe registros de ponto com precisão, segurança e clareza.<br>
-        Simplifique a rotina da sua empresa com uma solução eficiente e acessível.
-      </p>
-  
-      <div class="button-group">
-        <button (click)="irParaLogin()">Login</button>
-        <button (click)="irParaCadastroEmpresa()">Cadastrar Empresa</button>
-        <button (click)="irParaCadastroUsuario()">Cadastro de Usuário</button>
+        <!-- Esquerda -->
+        <div class="home-left">
+          <h1>Bem-vindo ao <span class="highlight">BateAi</span></h1>
+          <p class="subtitle">
+            Um sistema moderno para registro de ponto com <strong>segurança</strong>,
+            <strong>transparência</strong> e <strong>praticidade</strong>. Gerencie seus
+            colaboradores e pontos de forma simples e eficiente.
+          </p>
+          <div class="button-group">
+            <button (click)="irParaLogin()">Login</button>
+            <button (click)="irParaCadastroEmpresa()">Cadastrar Empresa</button>
+            <button (click)="irParaCadastroUsuario()">Cadastro Usuário</button>
+          </div>
+        </div>
+      
+        <!-- Direita -->
+        <div class="home-right">
+          <div class="card">
+            <img src="assets/img/clock.svg" alt="Pessoa registrando ponto" />
+          </div>
+        </div>
       </div>
-    </div>
   </div>
+  

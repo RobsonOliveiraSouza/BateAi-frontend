@@ -1,0 +1,21 @@
+<nav class="navbar">
+    <div class="navbar-brand">
+      <a routerLink="/">
+        <img src="assets/img/logo.png" alt="BateAI Logo" class="logo" />
+      </a>
+    </div>
+  
+    <div class="navbar-menu" [class.is-active]="isActive">
+      <a routerLink="/" (click)="closeMenu()">Home</a>
+      <a routerLink="/sobre" (click)="closeMenu()">Sobre</a>
+      <a routerLink="/contato" (click)="closeMenu()">Contato</a>
+      <a routerLink="/auth/login" (click)="closeMenu()">Login</a>
+    </div>
+  
+    <button class="navbar-burger" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+  
