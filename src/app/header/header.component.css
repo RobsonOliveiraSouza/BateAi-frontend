@@ -1,93 +1,94 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(135deg, #4f46e5, #9333ea);
-  padding: 1rem 2rem;
-  color: white;
-  width: 100%;
-  margin: 0; /* 🔥 garante sem espaço extra */
-  box-sizing: border-box;
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    padding: 0 2rem;
+    color: white;
+    width: 100%;
+    height: 70px; /* 🔥 altura fixa */
+  }
+  
+  .logo {
+    height: 70px; /* Mantém a altura da navbar */
+    transform: scale(2.5); /* 🔥 Dobra o tamanho visual */
+    transform-origin: left center; /* Faz zoom a partir da esquerda */
+    margin-left: -80px;
+  }  
 
 .navbar-brand a {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espaço entre logo e texto */
+    gap: 10px;
     text-decoration: none;
     color: white;
     font-size: 1.8rem;
     font-weight: bold;
-  }
-  
-  .logo {
-    height: 60px; /* Ajuste conforme necessário */
-    width: auto;
-  }
-  
+}
 
 .navbar-menu {
-  display: flex;
-  gap: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
 }
 
 .navbar-menu a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  transition: all 0.3s ease;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 .navbar-menu a:hover {
-  background: linear-gradient(135deg, #1b11e9, #8109f1);
-  color: #fff;
+    background: linear-gradient(135deg, #1b11e9, #8109f1);
+    color: #fff;
 }
 
 .navbar-burger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  background: none;
-  border: none;
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
 }
 
 .navbar-burger span {
-  background-color: white;
-  height: 3px;
-  margin: 4px 0;
-  width: 25px;
-  transition: background-color 0.3s;
+    background-color: white;
+    height: 3px;
+    margin: 4px 0;
+    width: 25px;
+    transition: background-color 0.3s;
 }
 
 @media (max-width: 768px) {
-  .navbar-menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    padding: 1rem 0;
-    text-align: center;
-  }
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 1rem 0;
+        text-align: center;
+    }
 
-  .navbar-menu.is-active {
-    display: flex;
-  }
+    .navbar-menu.is-active {
+        display: flex;
+    }
 
-  .navbar-burger {
-    display: flex;
-  }
+    .navbar-burger {
+        display: flex;
+    }
 
-  .navbar-menu a {
-    display: block;
-    padding: 1rem;
-    border-bottom: 1px solid #444;
-  }
+    .navbar-menu a {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid #444;
+    }
 
-  .navbar-menu a:last-child {
-    border-bottom: none;
-  }
+    .navbar-menu a:last-child {
+        border-bottom: none;
+    }
 }

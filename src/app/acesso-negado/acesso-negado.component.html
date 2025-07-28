@@ -1,3 +1,27 @@
-<h2>Acesso negado</h2>
-<p>Seu cadastro foi rejeitado ou você não tem permissão para acessar esta funcionalidade.</p>
-<a routerLink="/auth/login">Voltar</a>
+<div class="status-container">
+    <div class="status-card">
+      <div class="status-content">
+        <div class="status-info">
+          <h2>Acesso Negado</h2>
+          <p>
+            Seu cadastro foi <strong>rejeitado</strong> ou você não possui permissão
+            para acessar esta funcionalidade.
+          </p>
+          <ul>
+            <li>Verifique com sua empresa sobre o status do cadastro.</li>
+            <li>Entre em contato com o setor responsável pelo RH.</li>
+            <li>Ou acesse nossa página de <a routerLink="/contato">Contato</a> para suporte.</li>
+          </ul>
+          <button (click)="voltarLogin()" class="btn-primary">
+            Voltar ao Login
+          </button>
+        </div>
+  
+        <div class="status-divider"></div>
+  
+        <div class="status-image-container">
+          <img src="assets/img/access_denied.svg" alt="Acesso negado" class="status-image" />
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,100 @@
+/* Fundo permanece claro */
+.cadastro-container {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 2rem;
+  }
+  
+  /* Card central */
+  .cadastro-card {
+    background: #fff;
+    color: #333;
+    padding: 2rem 2.5rem;
+    border-radius: 15px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Título com gradiente laranja */
+  .cadastro-card h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(135deg, #e27924, #e65203, #9c3700);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  
+  /* Formulário */
+  .cadastro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Linha com 2 colunas */
+  .form-row {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  /* Grupos */
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    width: 100%;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: #ea580c;
+    box-shadow: 0 0 6px rgba(234, 88, 12, 0.3);
+  }
+  
+  /* Botão com gradiente laranja */
+  .btn-primary {
+    background: linear-gradient(135deg, #e27924, #e65203, #9c3700);
+    color: white;
+    font-size: 1rem;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #b9641d, #ac3e03, #a03800);
+  }
+  
+  /* Responsividade */
+  @media (max-width: 700px) {
+    .form-row {
+      flex-direction: column;
+    }
+  }
+  

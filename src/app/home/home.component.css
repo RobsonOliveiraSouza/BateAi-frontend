@@ -1,8 +1,9 @@
 /* Container principal */
 .home-container {
-  min-height: 93.3vh;
+  min-height: 92.7vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   padding: 2rem;
   background: linear-gradient(135deg, #4f46e5, #9333ea);
@@ -10,16 +11,18 @@
   text-align: center;
 }
 
+
 .home-content {
   display: flex;
-  max-width: 1400px; /* 🔥 Aumentei para dar mais respiro */
+  max-width: 1500px;
   width: 100%;
-  gap: 8rem; /* 🔥 Grande separação entre colunas */
+  gap: 8rem;
   align-items: center;
-  justify-content: center; /* 🔥 Centraliza no meio da tela */
+  justify-content: space-between;
+  flex: 1;
+  margin-top: 0.5rem;
 }
 
-/* Coluna esquerda */
 .home-left {
   flex: 1;
   display: flex;
@@ -37,8 +40,12 @@
 .subtitle {
   font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
   line-height: 1.6;
+  text-align: justify;
+  max-width: 500px;
+  margin-left: 7rem;
 }
 
 /* Botões */
@@ -99,6 +106,17 @@
   height: auto;
   margin: 2rem 0 1.5rem 0;
   border-radius: 10px;
+}
+
+.home-footer {
+  text-align: center;
+  width: 100%;
+  font-size: 0.9rem;
+  color: white;
+  padding: 0.5rem 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 /* Responsividade */

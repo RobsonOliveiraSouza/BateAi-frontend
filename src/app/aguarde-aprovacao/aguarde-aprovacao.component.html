@@ -1,2 +1,30 @@
-<h2>Cadastro em análise</h2>
-<p>Seu cadastro ainda está sendo avaliado. Por favor, aguarde a aprovação.</p>
+<div class="status-container">
+    <div class="status-card">
+      <div class="status-content">
+        
+        <div class="status-info">
+          <h2>Cadastro em Análise</h2>
+          <p>
+            Seu cadastro está sendo avaliado pela equipe da empresa.
+            Assim que for aprovado, você receberá um e-mail de confirmação.
+          </p>
+          <ul>
+            <li>Aguarde a confirmação no seu e-mail.</li>
+            <li>Verifique a pasta de spam, caso não receba.</li>
+            <li>Entre em contato com a empresa se houver demora.</li>
+          </ul>
+          <button (click)="voltarLogin()" class="btn-primary">
+            Voltar ao Login
+          </button>
+        </div>
+  
+        <div class="status-divider"></div>
+  
+        <div class="status-image-container">
+          <img src="assets/img/access_loading.svg" alt="Cadastro em Análise" class="status-image" />
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  

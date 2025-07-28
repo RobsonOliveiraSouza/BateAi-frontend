@@ -1,0 +1,121 @@
+.status-container {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 2rem;
+  }
+  
+  .status-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    max-width: 1250px;
+    width: 100%;
+    padding: 3rem 3.5rem;
+  }
+  
+  .status-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+  
+  .status-info {
+    flex: 1;
+    text-align: justify;
+    padding-left: 2rem;
+  }
+  
+  .status-info h2 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.2rem;
+    margin-top: -0.5rem;
+  }  
+  
+  .status-info p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+  
+  .status-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+  }
+  
+  .status-info ul li {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 0.6rem;
+  }
+  
+  .status-info ul li::before {
+    content: "✔ ";
+    color: #4f46e5;
+    font-weight: bold;
+  }
+  
+  .status-divider {
+    width: 2px;
+    background-color: #e0e0e0;
+    height: 100%;
+    border-radius: 1px;
+  }
+  
+  .status-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .status-image {
+    max-width: 450px;
+    width: 100%;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #3b36c8, #7b29d4);
+  }
+  
+  /* 🔹 Responsivo */
+  @media (max-width: 768px) {
+    .status-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .status-divider {
+      display: none;
+    }
+  
+    .status-image {
+      max-width: 200px;
+      margin-top: 1rem;
+    }
+  
+    .status-info ul li {
+      text-align: left;
+    }
+  }
+  

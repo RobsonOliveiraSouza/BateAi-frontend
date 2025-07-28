@@ -1,23 +1,47 @@
-<h2>Cadastro de Empresa</h2>
+<div class="cadastro-container">
+  <div class="cadastro-card">
+    <h2>Cadastro de Empresa</h2>
 
-<form (ngSubmit)="cadastrar()" #form="ngForm">
-  <label>Razão Social:</label>
-  <input type="text" [(ngModel)]="razaoSocial" name="razaoSocial" required />
+    <form (ngSubmit)="cadastrar()" #form="ngForm" class="cadastro-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Razão Social:</label>
+          <input type="text" [(ngModel)]="razaoSocial" name="razaoSocial" required />
+        </div>
 
-  <label>Nome Fantasia:</label>
-  <input type="text" [(ngModel)]="nomeFantasia" name="nomeFantasia" required />
+        <div class="form-group">
+          <label>Nome Fantasia:</label>
+          <input type="text" [(ngModel)]="nomeFantasia" name="nomeFantasia" required />
+        </div>
+      </div>
 
-  <label>CNPJ:</label>
-  <input type="text" [(ngModel)]="cnpj" name="cnpj" required />
+      <div class="form-row">
+        <div class="form-group">
+          <label>CNPJ:</label>
+          <input type="text" [(ngModel)]="cnpj" name="cnpj" required />
+        </div>
 
-  <label>Email do Responsável:</label>
-  <input type="email" [(ngModel)]="emailResponsavel" name="emailResponsavel" required />
+        <div class="form-group">
+          <label>Email do Responsável:</label>
+          <input type="email" [(ngModel)]="emailResponsavel" name="emailResponsavel" required />
+        </div>
+      </div>
 
-  <label>Senha:</label>
-  <input type="password" [(ngModel)]="senhaResponsavel" name="senhaResponsavel" required />
+      <div class="form-row">
+        <div class="form-group">
+          <label>Senha:</label>
+          <input type="password" [(ngModel)]="senhaResponsavel" name="senhaResponsavel" required />
+        </div>
 
-  <label>Endereço:</label>
-  <input type="text" [(ngModel)]="endereco" name="endereco" required />
+        <div class="form-group">
+          <label>Endereço:</label>
+          <input type="text" [(ngModel)]="endereco" name="endereco" required />
+        </div>
+      </div>
 
-  <button type="submit" [disabled]="!form.form.valid">Cadastrar Empresa</button>
-</form>
+      <button type="submit" [disabled]="!form.form.valid" class="btn-primary">
+        Cadastrar Empresa
+      </button>
+    </form>
+  </div>
+</div>

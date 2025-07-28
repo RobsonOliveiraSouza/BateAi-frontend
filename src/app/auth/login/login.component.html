@@ -1,16 +1,31 @@
-<h2>Login</h2>
-<form (ngSubmit)="login()" #loginForm="ngForm">
-  <label for="email">Email:</label>
-  <input type="email" id="email" [(ngModel)]="email" name="email" required />
+<div class="login-container">
+  <div class="login-card">
+    <h2>Login</h2>
+    <form (ngSubmit)="login()" #loginForm="ngForm" class="login-form">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" [(ngModel)]="email" name="email" required />
+      </div>
 
-  <label for="senha">Senha:</label>
-  <input type="password" id="senha" [(ngModel)]="senha" name="senha" required />
+      <div class="form-group">
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" [(ngModel)]="senha" name="senha" required />
+      </div>
 
-  <button type="submit" [disabled]="!loginForm.form.valid">Entrar</button>
-</form>
-<hr />
+      <button type="submit" [disabled]="!loginForm.form.valid" class="btn-primary">
+        Entrar
+      </button>
+    </form>
 
-<p>Não tem uma conta?</p>
+    <p class="register-text">Não tem uma conta?</p>
 
-<button (click)="irParaCadastroUsuario()">Cadastrar como Colaborador/Coordenador</button>
-<button (click)="irParaCadastroEmpresa()">Cadastrar Empresa</button>
+    <div class="button-group">
+      <button (click)="irParaCadastroUsuario()" class="btn-secondary">
+        Cadastrar como Colaborador/Coordenador
+      </button>
+      <button (click)="irParaCadastroEmpresa()" class="btn-secondary">
+        Cadastrar Empresa
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-aguarde-aprovacao',
@@ -8,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AguardeAprovacaoComponent {
 
+  constructor(private router: Router) {}
+  
+  voltarLogin() {
+    this.router.navigate(['/auth/login']);
+  }
+  
 }

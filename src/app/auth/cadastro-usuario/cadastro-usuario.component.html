@@ -1,42 +1,70 @@
-<h2>Cadastro de Usuário</h2>
+<div class="cadastro-container">
+  <div class="cadastro-card">
+    <h2>Cadastro de Usuário</h2>
 
-<form (ngSubmit)="cadastrar()" #form="ngForm">
-  <label>Nome:</label>
-  <input type="text" [(ngModel)]="nome" name="nome" required />
+    <form (ngSubmit)="cadastrar()" #form="ngForm" class="cadastro-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nome:</label>
+          <input type="text" [(ngModel)]="nome" name="nome" required />
+        </div>
 
-  <label>Email:</label>
-  <input type="email" [(ngModel)]="email" name="email" required />
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" [(ngModel)]="email" name="email" required />
+        </div>
+      </div>
 
-  <label>Senha:</label>
-  <input type="password" [(ngModel)]="senha" name="senha" required />
+      <div class="form-row">
+        <div class="form-group">
+          <label>Senha:</label>
+          <input type="password" [(ngModel)]="senha" name="senha" required />
+        </div>
 
-  <label>CPF:</label>
-  <input type="text" [(ngModel)]="cpf" name="cpf" required />
+        <div class="form-group">
+          <label>CPF:</label>
+          <input type="text" [(ngModel)]="cpf" name="cpf" required />
+        </div>
+      </div>
 
-  <label>Telefone:</label>
-  <input type="text" [(ngModel)]="telefone" name="telefone" />
+      <div class="form-row">
+        <div class="form-group">
+          <label>Telefone:</label>
+          <input type="text" [(ngModel)]="telefone" name="telefone" />
+        </div>
 
-  <label>Setor:</label>
-  <input type="text" [(ngModel)]="setor" name="setor" />
+        <div class="form-group">
+          <label>Setor:</label>
+          <input type="text" [(ngModel)]="setor" name="setor" />
+        </div>
+      </div>
 
-  <label>Tipo de Usuário:</label>
-  <select [(ngModel)]="tipoUsuario" name="tipoUsuario" required>
-    <option value="COLABORADOR">Colaborador</option>
-    <option value="COORDENADOR">Coordenador</option>
-  </select>
+      <div class="form-group">
+        <label>Tipo de Usuário:</label>
+        <select [(ngModel)]="tipoUsuario" name="tipoUsuario" required>
+          <option value="COLABORADOR">Colaborador</option>
+          <option value="COORDENADOR">Coordenador</option>
+        </select>
+      </div>
 
-  <label for="empresa">Procurar Empresa:</label>
-  <input [(ngModel)]="termoEmpresa" (input)="buscarEmpresas()" />
+      <div class="form-group">
+        <label for="empresa">Procurar Empresa:</label>
+        <input [(ngModel)]="termoEmpresa" name="termoEmpresa" (input)="buscarEmpresas()" />
+      </div>
 
-  <ul *ngIf="empresasEncontradas.length > 0">
-    <li *ngFor="let empresa of empresasEncontradas" (click)="selecionarEmpresa(empresa)">
-      {{ empresa.nomeFantasia }} (CNPJ: {{ empresa.cnpj }})
-    </li>
-  </ul>
-  
-  <p *ngIf="empresaSelecionada">
-    Empresa selecionada: {{ empresaSelecionada.nomeFantasia }}
-  </p>
+      <ul *ngIf="empresasEncontradas.length > 0" class="empresa-list">
+        <li *ngFor="let empresa of empresasEncontradas" (click)="selecionarEmpresa(empresa)">
+          {{ empresa.nomeFantasia }} (CNPJ: {{ empresa.cnpj }})
+        </li>
+      </ul>
 
-  <button type="submit" [disabled]="!form.form.valid">Cadastrar</button>
-</form>
+      <p *ngIf="empresaSelecionada" class="empresa-selecionada">
+        Empresa selecionada: {{ empresaSelecionada.nomeFantasia }}
+      </p>
+
+      <button type="submit" [disabled]="!form.form.valid" class="btn-primary">
+        Cadastrar
+      </button>
+    </form>
+  </div>
+</div>
