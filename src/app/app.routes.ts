@@ -2,8 +2,6 @@ import { Routes } from '@angular/router';
 import { roleGuard } from './auth/guards/role.guard';
 import { HomeRedirectGuard } from './auth/guards/home-redirect.guard';
 import { authGuard } from './auth/auth.guard';
-import { AguardeAprovacaoComponent } from './aguarde-aprovacao/aguarde-aprovacao.component';
-import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
 
 export const routes: Routes = [
   {
@@ -70,7 +68,5 @@ export const routes: Routes = [
     canActivate: [roleGuard(['COORDENADOR'])],
     loadComponent: () => import('./gerenciar-usuarios/gerenciar-usuarios.component').then(m => m.GerenciarUsuariosComponent)
   },
-  { path: 'aguarde-aprovacao', component: AguardeAprovacaoComponent },
-  { path: 'acesso-negado', component: AcessoNegadoComponent }
 
 ];

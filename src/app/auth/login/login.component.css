@@ -118,6 +118,46 @@
     color: white;
   }
   
+  .btn-primary-usuario {
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    color: white;
+  }
+  
+  .btn-primary-usuario:hover {
+    background: linear-gradient(135deg, #3b36c8, #7b29d4);
+  }
+  
+  .btn-primary-empresa {
+    background: linear-gradient(135deg, #f97316, #fb923c); /* laranja */
+    color: white;
+  }
+  
+  .btn-primary-empresa:hover {
+    background: linear-gradient(135deg, #ea580c, #f97316); /* laranja escuro */
+  }  
+
+  .form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    background-color: white;
+    appearance: none; /* Remove estilo padrão do select */
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .form-group select:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 6px rgba(79, 70, 229, 0.3);
+  }
+  
+
   /* Responsivo */
   @media (max-width: 500px) {
     .login-card {

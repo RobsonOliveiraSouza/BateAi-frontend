@@ -1,20 +1,61 @@
-<h2>Bem-vindo ao Sistema!</h2>
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h2>Bem-vindo ao BateAi!</h2>
+    <button class="btn-logout" (click)="logout()">Sair</button>
+  </div>
 
-<div *ngIf="role === 'COORDENADOR'">
-  <h3>Menu do Coordenador</h3>
-  <button routerLink="/usuarios/gerenciar">Gerenciar Usuários</button>
-  <button routerLink="/ponto/registro">Registrar Ponto</button>
+  <p class="dashboard-subtitle">Escolha uma ação abaixo:</p>
+
+  <div class="dashboard-grid">
+    <!-- Coordenador -->
+    <ng-container *ngIf="role === 'COORDENADOR'">
+      <div class="dashboard-card">
+        <div class="card-icon">👥</div>
+        <h3>Gerenciar Usuários</h3>
+        <p>Aprove ou rejeite solicitações de vínculo.</p>
+        <button routerLink="/usuarios/gerenciar" class="btn-primary">Acessar</button>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-icon">🕒</div>
+        <h3>Registrar Ponto</h3>
+        <p>Faça a marcação de ponto dos colaboradores.</p>
+        <button routerLink="/ponto/registro" class="btn-primary">Registrar</button>
+      </div>
+    </ng-container>
+
+    <!-- Colaborador -->
+    <ng-container *ngIf="role === 'COLABORADOR'">
+      <div class="dashboard-card">
+        <div class="card-icon">📜</div>
+        <h3>Histórico de Pontos</h3>
+        <p>Consulte todas as marcações de ponto.</p>
+        <button routerLink="/ponto/historico" class="btn-primary">Ver Histórico</button>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-icon">🕒</div>
+        <h3>Registrar Ponto</h3>
+        <p>Registre sua entrada ou saída.</p>
+        <button routerLink="/ponto/registro" class="btn-primary">Registrar</button>
+      </div>
+    </ng-container>
+
+    <!-- Empresa -->
+    <ng-container *ngIf="role === 'EMPRESA'">
+      <div class="dashboard-card">
+        <div class="card-icon">📊</div>
+        <h3>Dashboard da Empresa</h3>
+        <p>Acompanhe indicadores e métricas.</p>
+        <button routerLink="/usuarios/dashboard" class="btn-primary">Visualizar</button>
+      </div>
+
+      <div class="dashboard-card">
+        <div class="card-icon">✅</div>
+        <h3>Aprovar Coordenadores</h3>
+        <p>Gerencie solicitações de coordenadores.</p>
+        <button routerLink="/coordenadores/pendentes" class="btn-primary">Aprovar</button>
+      </div>
+    </ng-container>
+  </div>
 </div>
-
-<div *ngIf="role === 'COLABORADOR'">
-  <h3>Menu do Colaborador</h3>
-  <button routerLink="/ponto/historico">Ver Histórico de Pontos</button>
-</div>
-
-<div *ngIf="role === 'EMPRESA'">
-  <h3>Menu da Empresa</h3>
-  <button routerLink="/usuarios/dashboard">Ver Dashboard da Empresa</button>
-  <button routerLink="/coordenadores/pendentes">Aprovar Coordenadores</button>
-</div>
-
-<button (click)="logout()">Sair</button>

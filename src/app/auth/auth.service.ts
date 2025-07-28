@@ -1,7 +1,7 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import { ToastrService } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -20,6 +20,18 @@ export class AuthService {
 
   login(email: string, senha: string) {
     return this.http.post<any>(`${this.BASE_URL}/auth/login`, { email, senha });
+  }
+
+  loginUsuario(request: { email: string, senha: string }) {
+    return this.http.post<{ token: string; refreshToken: string }>(
+      `${this.BASE_URL}/auth/login`, request
+    );
+  }
+
+  loginEmpresa(request: { email: string, senha: string }) {
+    return this.http.post<{ token: string; refreshToken: string }>(
+      `${this.BASE_URL}/auth/login-empresa`, request
+    );
   }
 
   logout(): void {
@@ -60,25 +72,15 @@ export class AuthService {
   getUserRole(): string | null {
     const token = this.getToken();
     if (!token) return null;
-
-    try {
-      const decoded: any = jwtDecode(token);
-      return decoded.role || null;
-    } catch {
-      return null;
-    }
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.role || null;
   }
 
   getUserStatus(): string | null {
     const token = this.getToken();
     if (!token) return null;
-
-    try {
-      const decoded: any = jwtDecode(token);
-      return decoded.status || null;
-    } catch {
-      return null;
-    }
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.status || null;
   }
 
   private isBrowser(): boolean {

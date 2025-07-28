@@ -11,12 +11,28 @@ export function roleGuard(rolesPermitidos: string[]): CanActivateFn {
     const role = authService.getUserRole();
     const status = authService.getUserStatus();
 
-    if (!isLoggedIn || !role || !status) {
+    // Se não logado ou sem role, bloqueia
+    if (!isLoggedIn || !role) {
       router.navigate(['/auth/login']);
       return false;
     }
 
-    // Se status for pendente
+    // Se for empresa, não há status, só validar role
+    if (role === 'EMPRESA') {
+      if (rolesPermitidos.includes(role)) {
+        return true; // libera
+      } else {
+        router.navigate(['/auth/login']);
+        return false;
+      }
+    }
+
+    // Para usuários que têm status:
+    if (!status) {
+      router.navigate(['/auth/login']);
+      return false;
+    }
+
     if (status.startsWith('PENDENTE')) {
       router.navigate(['/aguarde-aprovacao']);
       return false;

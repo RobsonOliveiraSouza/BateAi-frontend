@@ -1,21 +1,37 @@
 <div class="login-container">
-  <div class="login-card">
+  <div class="login-card" [ngClass]="{'empresa-bg': tipoLogin === 'empresa', 'usuario-bg': tipoLogin === 'usuario'}">    
     <h2>Login</h2>
     <form (ngSubmit)="login()" #loginForm="ngForm" class="login-form">
+
+      <div class="form-group">
+        <label for="tipoLogin">Entrar como:</label>
+        <select id="tipoLogin" [(ngModel)]="tipoLogin" name="tipoLogin" required>
+          <option value="usuario">Usuário</option>
+          <option value="empresa">Empresa</option>
+        </select>
+      </div>
+    
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" id="email" [(ngModel)]="email" name="email" required />
       </div>
-
+    
       <div class="form-group">
         <label for="senha">Senha:</label>
         <input type="password" id="senha" [(ngModel)]="senha" name="senha" required />
       </div>
-
-      <button type="submit" [disabled]="!loginForm.form.valid" class="btn-primary">
+    
+      <button 
+        type="submit" 
+        [disabled]="!loginForm.form.valid" 
+        class="btn-primary"
+        [ngClass]="{
+          'btn-primary-usuario': tipoLogin === 'usuario',
+          'btn-primary-empresa': tipoLogin === 'empresa'}">
         Entrar
       </button>
-    </form>
+
+    </form>    
 
     <p class="register-text">Não tem uma conta?</p>
 
