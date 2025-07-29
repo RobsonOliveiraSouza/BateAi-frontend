@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { ToastrService } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,20 @@ export class AuthService {
   loginEmpresa(request: { email: string, senha: string }) {
     return this.http.post<{ token: string; refreshToken: string }>(
       `${this.BASE_URL}/auth/login-empresa`, request
+    ).pipe(
+      tap(response => {
+        if (this.isBrowser()) {
+          localStorage.setItem('token', response.token);
+          
+          const decoded: any = jwtDecode(response.token);
+          if (decoded.empresaId) {
+            localStorage.setItem('empresaId', decoded.empresaId.toString());
+          }
+        }
+      })
     );
   }
+
 
   logout(): void {
     if (this.isBrowser()) {
@@ -72,18 +85,26 @@ export class AuthService {
   getUserRole(): string | null {
     const token = this.getToken();
     if (!token) return null;
-    const payload = JSON.parse(atob(token.split('.')[1]));
+    const payload = jwtDecode(token) as any;
     return payload.role || null;
   }
 
   getUserStatus(): string | null {
     const token = this.getToken();
     if (!token) return null;
-    const payload = JSON.parse(atob(token.split('.')[1]));
+    const payload = jwtDecode(token) as any;
     return payload.status || null;
   }
 
   private isBrowser(): boolean {
     return isPlatformBrowser(this.platformId);
+  }
+
+  getEmpresaId(): number | null {
+    const empresaIdStr = localStorage.getItem('empresaId');
+    if (!empresaIdStr) {
+      return null;
+    }
+    return Number(empresaIdStr);
   }
 }

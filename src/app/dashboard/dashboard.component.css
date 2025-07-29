@@ -1,107 +1,239 @@
 .dashboard-container {
-    min-height: calc(100vh - 70px);
-    display: flex;
+  min-height: calc(100vh - 192px);
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.coordenador-container {
+  min-height: calc(100vh - 70px);
+}
+
+.colaborador-container {
+  min-height: calc(100vh - 70px);
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.dashboard-cards-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.dashboard-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fixed-card {
+  width: 700px;
+  height: 500px;
+  overflow: hidden;
+}
+
+.scrollable-card .coordenador-list {
+  width: 100%;
+  margin-top: 1rem;
+  overflow-y: auto;
+  max-height: 400px;
+  padding-right: 10px;
+}
+
+.dashboard-card.fixed-card p.descricao {
+  font-size: 1rem;
+  color: #444;
+  margin: 2rem 1.5rem 1.5rem 1.5rem;
+  text-align: justify;
+}
+
+.dashboard-card.fixed-card p.manutencao {
+  font-size: 1.1rem;
+  color: #b33a3a;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.dashboard-card.fixed-card .imagem-manutencao {
+  width: 290px;
+  height: auto;
+  margin: 0 auto 1.5rem auto;
+  display: block;
+  opacity: 0.7;
+}
+
+/* Novo estilo para coordenadores */
+.coordenador-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f1f3f5;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s;
+}
+
+.coordenador-item:hover {
+  background: #e9ecef;
+}
+
+.coordenador-info {
+  flex: 1;
+}
+
+.coordenador-nome {
+  font-weight: bold;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.coordenador-email {
+  margin: 0.2rem 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.coordenador-status {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4f46e5;
+  background: #e0e7ff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 0.3rem;
+}
+
+.coordenador-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-reject {
+  background: #e53935;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-logout {
+  background: transparent;
+  border: 2px solid #4f46e5;
+  color: #4f46e5;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-logout:hover {
+  background: #4f46e5;
+  color: white;
+}
+
+/* Estilo específico para o card de registrar ponto */
+.registrar-ponto-card {
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 1.5rem;
+}
+
+.registrar-ponto-card h3 {
+  font-size: 1.8rem;
+  text-align: center;
+  color: #4f46e5;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+}
+
+.form-group select,
+.form-group input[type="text"] {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group select:focus,
+.form-group input[type="text"]:focus {
+  border-color: #4f46e5;
+  outline: none;
+}
+
+.registrar-btn {
+  margin-top: 1rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.mensagem-registro {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #444;
+}
+
+/* COLABORADOR*/
+
+
+
+@media (max-width: 1100px) {
+  .dashboard-cards-row {
     flex-direction: column;
-    padding: 2rem;
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-  }
-  
-  .dashboard-header {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
   }
-  
-  .dashboard-header h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    background: linear-gradient(135deg, #4f46e5, #9333ea);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+
+  .coordenador-acoes {
+    flex-direction: row;
   }
-  
-  .dashboard-subtitle {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 2rem;
-  }
-  
-  .dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-  
-  .dashboard-card {
-    background: #fff;
-    border-radius: 15px;
-    padding: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: transform 0.3s ease;
-  }
-  
-  .dashboard-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-  
-  .dashboard-card h3 {
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin-bottom: 0.8rem;
-  }
-  
-  .dashboard-card p {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 1.2rem;
-  }
-  
-  .btn-primary {
-    background: linear-gradient(135deg, #4f46e5, #9333ea);
-    color: #fff;
-    font-size: 1rem;
-    padding: 0.8rem 1.2rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .btn-primary:hover {
-    background: linear-gradient(135deg, #3b36c8, #7b29d4);
-  }
-  
-  .btn-logout {
-    background: transparent;
-    border: 2px solid #4f46e5;
-    color: #4f46e5;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
-  }
-  
-  .btn-logout:hover {
-    background: #4f46e5;
-    color: #fff;
-  }
-  
-  @media (max-width: 768px) {
-    .dashboard-header {
-      flex-direction: column;
-      gap: 1rem;
-    }
-  }
-  
+}

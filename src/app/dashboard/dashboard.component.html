@@ -1,61 +1,156 @@
-<div class="dashboard-container">
+<div class="dashboard-container" 
+        [ngClass]="{'coordenador-container': role === 'COORDENADOR'} "
+        [ngClass]="{'colaborador-container': role === 'COLABORADOR'}">
   <div class="dashboard-header">
     <h2>Bem-vindo ao BateAi!</h2>
     <button class="btn-logout" (click)="logout()">Sair</button>
   </div>
 
-  <p class="dashboard-subtitle">Escolha uma ação abaixo:</p>
-
-  <div class="dashboard-grid">
-    <!-- Coordenador -->
     <ng-container *ngIf="role === 'COORDENADOR'">
-      <div class="dashboard-card">
-        <div class="card-icon">👥</div>
-        <h3>Gerenciar Usuários</h3>
-        <p>Aprove ou rejeite solicitações de vínculo.</p>
-        <button routerLink="/usuarios/gerenciar" class="btn-primary">Acessar</button>
-      </div>
+      <div class="dashboard-cards-row">
+    
+        <!-- Card de Registro de Ponto -->
+        <div class="dashboard-card fixed-card registrar-ponto-card">
+          <h3>Registrar Ponto</h3>
 
-      <div class="dashboard-card">
-        <div class="card-icon">🕒</div>
-        <h3>Registrar Ponto</h3>
-        <p>Faça a marcação de ponto dos colaboradores.</p>
-        <button routerLink="/ponto/registro" class="btn-primary">Registrar</button>
+          <div class="form-group">
+            <label for="tipoRegistro">Tipo de Registro</label>
+            <select id="tipoRegistro" [(ngModel)]="tipoRegistro">
+              <option value="">Selecione...</option>
+              <option value="ENTRADA">Entrada</option>
+              <option value="SAIDA">Saída</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="localizacao">Localização</label>
+            <input
+              type="text"
+              id="localizacao"
+              [(ngModel)]="localizacao"
+              placeholder="Ex: Escritório, Remoto" />
+          </div>
+
+          <button class="btn-primary registrar-btn" (click)="registrarPonto()">Registrar</button>
+
+          <p *ngIf="mensagemRegistro" class="mensagem-registro">{{ mensagemRegistro }}</p>
+        </div>
+    
+        <!-- Card com Lista de Colaboradores -->
+        <div class="dashboard-card fixed-card scrollable-card" *ngIf="role === 'COORDENADOR'">
+          <h3>Gerenciar Colaboradores</h3>
+          <div class="coordenador-list">
+            <div class="coordenador-item" *ngFor="let colab of colaboradoresPendentes">
+              <div class="coordenador-info">
+                <p class="coordenador-nome">{{ colab.nome }}</p>
+                <p class="coordenador-email">{{ colab.email }}</p>
+                <span class="coordenador-status">{{ colab.statusVinculo }}</span>
+              </div>
+              <div class="coordenador-acoes">
+                <button class="btn-primary" (click)="aprovarColaborador(colab.id)">Aprovar</button>
+                <button class="btn-reject" (click)="rejeitarColaborador(colab.id)">Rejeitar</button>
+              </div>
+            </div>
+          </div>
+        </div>        
       </div>
-    </ng-container>
+    </ng-container>  
 
     <!-- Colaborador -->
     <ng-container *ngIf="role === 'COLABORADOR'">
-      <div class="dashboard-card">
-        <div class="card-icon">📜</div>
-        <h3>Histórico de Pontos</h3>
-        <p>Consulte todas as marcações de ponto.</p>
-        <button routerLink="/ponto/historico" class="btn-primary">Ver Histórico</button>
-      </div>
+      <div class="dashboard-cards-row">
+        
+        
+        <!-- Card de Registro de Ponto -->
+        <div class="dashboard-card fixed-card registrar-ponto-card">
+          <h3>Registrar Ponto</h3>
 
-      <div class="dashboard-card">
-        <div class="card-icon">🕒</div>
-        <h3>Registrar Ponto</h3>
-        <p>Registre sua entrada ou saída.</p>
-        <button routerLink="/ponto/registro" class="btn-primary">Registrar</button>
+          <div class="form-group">
+            <label for="tipoRegistro">Tipo de Registro</label>
+            <select id="tipoRegistro" [(ngModel)]="tipoRegistro">
+              <option value="">Selecione...</option>
+              <option value="ENTRADA">Entrada</option>
+              <option value="SAIDA">Saída</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="localizacao">Localização</label>
+            <input
+              type="text"
+              id="localizacao"
+              [(ngModel)]="localizacao"
+              placeholder="Ex: Escritório, Remoto" />
+          </div>
+
+          <button class="btn-primary registrar-btn" (click)="registrarPonto()">Registrar</button>
+
+          <p *ngIf="mensagemRegistro" class="mensagem-registro">{{ mensagemRegistro }}</p>
+        </div>
+
+        <!-- Card Histórico de Pontos -->
+        <div class="dashboard-card fixed-card scrollable-card">
+          <h3>Histórico de Pontos</h3>
+          <div class="coordenador-list">
+            <div class="coordenador-item" *ngFor="let ponto of historicoPontos">
+              <div class="coordenador-info">
+                <p class="coordenador-nome">{{ ponto.tipoRegistro }}</p>
+                <p class="coordenador-email">{{ ponto.dataHora | date: 'dd/MM/yyyy HH:mm' }}</p>
+                <span class="coordenador-status">{{ ponto.localizacao }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </ng-container>
+
 
     <!-- Empresa -->
     <ng-container *ngIf="role === 'EMPRESA'">
-      <div class="dashboard-card">
-        <div class="card-icon">📊</div>
-        <h3>Dashboard da Empresa</h3>
-        <p>Acompanhe indicadores e métricas.</p>
-        <button routerLink="/usuarios/dashboard" class="btn-primary">Visualizar</button>
+      <div class="dashboard-container">
+        <div class="dashboard-header">
+          <h2>Dashboard da Empresa</h2>
+        </div>
+      
+        <div class="dashboard-cards-row">
+          <!-- Card Relatórios -->
+          <div class="dashboard-card fixed-card">
+            <h3>Relatórios</h3>
+            
+            <p class="descricao">
+              Aqui você poderá gerar relatórios detalhados sobre o desempenho da empresa, colaboradores e atividades.
+            </p>
+            
+            <p class="manutencao">
+              🚧 Serviço em manutenção — breve retorno com novas funcionalidades!
+            </p>
+            
+            <img src="assets/img/manutencao.svg" alt="" class="imagem-manutencao" />
+            
+            <button class="btn-primary" disabled>Gerar Relatórios</button>
+          </div>          
+      
+          <!-- Card Gerenciar Coordenadores -->
+          <div class="dashboard-card fixed-card scrollable-card">
+            <h3>Gerenciar Coordenadores</h3>
+            <div class="coordenador-list">
+              <div class="coordenador-item" *ngFor="let coord of coordenadores">
+                <div class="coordenador-info">
+                  <p class="coordenador-nome">{{ coord.nome }}</p>
+                  <p class="coordenador-email">{{ coord.email }}</p>
+                  <span class="coordenador-status">{{ coord.statusVinculo }}</span>
+                </div>
+                <div class="coordenador-acoes">
+                  <button class="btn-primary" (click)="aprovar(coord.id)">Aprovar</button>
+                  <button class="btn-reject" (click)="rejeitar(coord.id)">Rejeitar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="dashboard-card">
-        <div class="card-icon">✅</div>
-        <h3>Aprovar Coordenadores</h3>
-        <p>Gerencie solicitações de coordenadores.</p>
-        <button routerLink="/coordenadores/pendentes" class="btn-primary">Aprovar</button>
-      </div>
+          
+      
     </ng-container>
   </div>
-</div>
