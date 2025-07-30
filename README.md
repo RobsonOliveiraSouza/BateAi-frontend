@@ -206,7 +206,7 @@ ng serve
 ## 📌 Requisitos
 
 - Node.js 18+
-- Angular CLI 16+
+- Angular CLI 16+ (o recomendado é o 19)
 - API do sistema BateAi (Spring Boot) rodando localmente
 
 ## 📄 Licença
