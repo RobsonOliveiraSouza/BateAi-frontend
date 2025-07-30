@@ -7,7 +7,7 @@ Este projeto é a interface web do sistema **BateAi**, uma plataforma de control
 - [Angular 19](https://angular.io/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [RxJS](https://rxjs.dev/)
-- HTML, CSS
+- HTML, CSS 
 
 
 ## 🏗️ Estrutura do Projeto
