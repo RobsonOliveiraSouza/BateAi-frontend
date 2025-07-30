@@ -28,7 +28,7 @@ Este projeto é a interface web do sistema **BateAi**, uma plataforma de control
     │ ├── ponto/             # Componente de gerenciamento (ponto)
     │ ├── services/          # Serviços de comunicação com API
     │ ├── shared/            # Componentes compartilhados
-    │ ├── sobre/
+    │ ├── game/              # Sobre a gameficação (em breve)
     │ ├── app.config.ts      # Arquivo de Configuração 
     │ └── app.routes.ts      # Arquivo de Rotas
     ├── assets/
@@ -196,7 +196,10 @@ registrarPonto(): void {
 # 1. Instale as dependências
 npm install
 
-# 2. Rode o servidor Angular
+# 2. Instale o Angular (caso não tenha)
+npm install -g @angular/cli
+ 
+# 3. Rode o servidor Angular
 ng serve
 ```
 

@@ -26,9 +26,9 @@ export const routes: Routes = [
       import('./auth/cadastro-usuario/cadastro-usuario.component').then(m => m.CadastroUsuarioComponent)
   },
   {
-    path: 'sobre',
+    path: 'game',
     loadComponent: () =>
-      import('./sobre/sobre.component').then(m => m.SobreComponent)
+      import('./game/game.component').then(m => m.GameComponent)
   },
   {
     path: 'contato',

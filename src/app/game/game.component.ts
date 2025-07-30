@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sobre',
+  selector: 'app-game',
   imports: [],
-  templateUrl: './sobre.component.html',
-  styleUrl: './sobre.component.css'
+  templateUrl: './game.component.html',
+  styleUrl: './game.component.css'
 })
-export class SobreComponent {
+export class GameComponent {
 
   constructor(private router: Router) {}
 
